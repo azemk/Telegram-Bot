@@ -10,7 +10,7 @@ public class ProcessedJob {
     @Autowired
     JobService jobService;
 
-    @Scheduled(cron = "0 */5 * * * * ")
+    @Scheduled(cron = "0 */10 * * * * ")
     public void processed(){
 
         jobService.synchronizeTracking( );

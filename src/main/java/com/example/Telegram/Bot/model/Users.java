@@ -15,7 +15,7 @@ import javax.persistence.*;
 @Table(name = "model")
 @Data
 @Component
-public class Model {
+public class Users {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

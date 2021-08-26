@@ -4,13 +4,23 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
 
-@Component
-public class ProcessedJob {
-    @Autowired
-    JobService jobService;
 
-    @Scheduled(cron = "0 0 8-18/2 * * *")
-    public void processed(){
-        jobService.synchronizeTracking( );
+@Component
+public class AmountUpdateProcessedJob {
+
+
+    @Autowired
+    AmountUpdateService service;
+
+
+    @Scheduled(cron = "0 */5 * * * *" )
+    public void updateAmount(){
+      service.synchronizeAmount();
     }
+
+
+
+
+
+
 }

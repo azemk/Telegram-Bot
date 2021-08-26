@@ -10,16 +10,14 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 
-
 	<groupId>com.example</groupId>
-	<artifactId>Telegram-Bot</artifactId>
+	<artifactId>telegram-Bot</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>Telegram-Bot</name>
+	<name>telegram-Bot</name>
 	<description>Telegram Bot Project </description>
 	<properties>
 		<java.version>8</java.version>
 	</properties>
-
 
 	<dependencies>
 		<dependency>
@@ -64,8 +62,4 @@
 			</plugin>
 		</plugins>
 	</build>
-
-
-
-
 </project>

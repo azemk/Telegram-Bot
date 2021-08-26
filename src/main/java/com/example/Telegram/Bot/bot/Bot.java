@@ -2,8 +2,8 @@ package com.example.Telegram.Bot.bot;
 
 
 import com.example.Telegram.Bot.config.Config;
-import com.example.Telegram.Bot.model.Model;
-import com.example.Telegram.Bot.repository.Repository;
+import com.example.Telegram.Bot.model.Users;
+import com.example.Telegram.Bot.repository.UsersRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -17,10 +17,10 @@ import org.telegram.telegrambots.meta.exceptions.TelegramApiException;
 public class Bot extends TelegramLongPollingBot {
 
     @Autowired
-    private Repository repository;
+    private UsersRepository repository;
 
     @Autowired
-    Model model;
+    Users model;
 
     final Config config;
 
@@ -55,7 +55,7 @@ public class Bot extends TelegramLongPollingBot {
         if (messageText.contains("/hello")) {
             builder.text("Hello" + " " + update.getMessage().getFrom().getUserName() + "!");
 
-            Model request = repository.findModelByUserId(update.getMessage().getFrom().getId());
+            Users request = repository.findModelByUserId(update.getMessage().getFrom().getId());
             if (request == null || request.getId() == null && request.getUserName() == null) {
                 model.setUserName(update.getMessage().getFrom().getUserName());
                 model.setUserId(update.getMessage().getFrom().getId());
@@ -72,7 +72,7 @@ public class Bot extends TelegramLongPollingBot {
 
         if (messageText.contains("/done")) {
 
-            Model request = repository.findModelByUserId(update.getMessage().getFrom().getId());
+            Users request = repository.findModelByUserId(update.getMessage().getFrom().getId());
             builder.text("Tracker : +" + 1);
             if (request.getAmount() == null) {
                 request.setAmount(1);
@@ -90,11 +90,11 @@ public class Bot extends TelegramLongPollingBot {
         }
 
         if (messageText.contains("/count")) {
-            Model request = repository.findModelByUserId(update.getMessage().getFrom().getId());
+            Users request = repository.findModelByUserId(update.getMessage().getFrom().getId());
             if(request.getAmount()>10){
-                builder.text("Amount" + request.getAmount() +"/n Good Job!");
+                builder.text("Amount : " + request.getAmount() +" , good job!");
             }else{
-                builder.text("Amount :" + request.getAmount());
+                builder.text("Amount : " + request.getAmount());
             }
 
 
